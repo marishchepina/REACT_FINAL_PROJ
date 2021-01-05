@@ -5,7 +5,7 @@
   outline: 0;
 }
 
-html, body, #root {
+html, body, #root, #container, #container>div {
   height: 100vh;
 }
 
@@ -22,7 +22,7 @@ body {
 
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: auto;
   margin: 0 auto;
 }
@@ -38,14 +38,20 @@ ul {
 #container {
   margin: 0 auto;
   width: 100%;
-  height: auto;
-  min-height: 100%;
-  padding: 80px 5% 10px 5%;
-  text-align: center;
+  padding: 0 5% 20px 5%;
   position: relative;
   max-width: 800px;
-  flex-wrap: wrap;
   font-size: 6rem;
   line-height: 8rem;
-  overflow-x: hidden
+}
+
+#container div {
+  width: 100%;
+  text-align: center;
+}
+
+#container>div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

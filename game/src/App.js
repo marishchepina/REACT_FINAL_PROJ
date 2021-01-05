@@ -11,31 +11,31 @@ class App extends Component {
         'id': 'clever',
         'word': 'clever',
         'translate': 'розумний',
-        //'img': 'img/4-l1/1.gif'
+        'img': './img/4-l1/1.gif'
       },
       {
         'id': 'niece',
         'word': 'niece',
         'translate': 'племінниця',
-        //'img': 'img/4-l1/2.jpg'
+        'img': './img/4-l1/2.jpg'
       },
       {
         'id': 'nephew',
         'word': 'nephew',
         'translate': 'племінник',
-        // 'img': 'img/4-l1/3.jpg'
+        'img': './img/4-l1/3.jpg'
       },
       {
         'id': 'friendly',
         'word': 'friendly',
         'translate': 'дружелюбний',
-        //'img': 'img/4-l1/4.gif'
+        'img': './img/4-l1/4.gif'
       },
       {
         'id': 'helpful',
         'word': 'helpful',
         'translate': 'корисний',
-        //'img': 'img/4-l1/5-1.jpg'
+        'img': './img/4-l1/5-1.jpg'
       }
     ]
   }
@@ -47,7 +47,7 @@ class App extends Component {
 
     return (
       <div id="container">
-        <ShowWord word={this.state.words} />
+        <ShowWord wordSet={this.state.words} />
       </div>
     );
   }
