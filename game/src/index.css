@@ -1,0 +1,51 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  outline: 0;
+}
+
+html, body, #root {
+  height: 100vh;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #fff;
+  box-sizing: border-box;
+  font: 2rem/2.4rem 'Open Sans', sans-serif;
+  color: #000;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none
+}
+
+.hide {
+  display: none
+}
+
+#container {
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  padding: 80px 5% 10px 5%;
+  text-align: center;
+  position: relative;
+  max-width: 800px;
+  flex-wrap: wrap;
+  font-size: 6rem;
+  line-height: 8rem;
+  overflow-x: hidden
+}
