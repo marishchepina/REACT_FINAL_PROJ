@@ -1,0 +1,29 @@
+.menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 100px 4%;
+    background: darkolivegreen;
+    transform: translateX(0px);
+    transition: transform .22s ease-in;
+    z-index: 90;
+}
+
+.menu--close {
+    transform: translateX(100%);
+}
+
+.menu li {
+    margin-bottom: 20px;
+}
+
+.menu li a {
+    color: #fff;
+    transition: opacity .3m;
+}
+
+.menu li a:hover, .menu li a:active {
+    opacity: .7;
+}

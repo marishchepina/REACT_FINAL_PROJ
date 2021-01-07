@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import ReactAudioPlayer from 'react-audio-player';
 import './ShowWord.css'
-
-
-
 
 
 function ShowWord({ wordSet }) {
@@ -34,6 +32,7 @@ function ShowWord({ wordSet }) {
             <div className="showWord__img">
                 <img src={wordToShow.img} />
             </div>
+            <ReactAudioPlayer src={wordToShow.audio} autoPlay />
         </div>
     )
 }
