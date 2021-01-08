@@ -1,34 +1,32 @@
 import React, { Component } from 'react'
+import { render } from 'react-dom'
 import './Menu.css'
 
-const links = [1, 2, 3]
 
-class Menu extends Component {
-    renderLinks() {
-        return links.map((link, index) => {
-            return (
-                <li key={index}>
-                    <a href="/">
-                        Урок {link}
-                    </a>
-                </li>
-            )
-        })
+const Menu = props => {
+    console.log(props)
+
+    const cls = ['menu']
+    if (!props.isOpen) {
+        cls.push('menu--close')
     }
-    render() {
-        const cls = ['menu']
-        if (!this.props.isOpen) {
-            cls.push('menu--close')
-        }
-        return (
-            <nav className={cls.join(' ')}>
-                <ul>
-                    {this.renderLinks()}
-                </ul>
-            </nav>
-        )
-    }
+
+    let links = props.allWords.map(el =>
+        <li key={el.lessonNumb}>
+            <a href="/">Урок {el.lessonNumb}</a>
+        </li>
+    )
+    return (
+        <nav className={cls.join(' ')}>
+            <ul>
+                {links}
+            </ul>
+        </nav>
+    )
 }
+
+
+
 
 
 export default Menu
