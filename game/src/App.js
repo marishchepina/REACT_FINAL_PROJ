@@ -25,11 +25,16 @@ class App extends Component {
     })
   }
 
-  render() {
 
+  handleLinkChoise = (nuber) => {
+    console.log(nuber)
+  }
+
+
+  render() {
     return (
       <Router>
-        <div>
+        <div className='container'>
           <MenuToggle
             onToggle={this.toggleMenuHandler}
             isOpen={this.state.menu}
@@ -37,9 +42,10 @@ class App extends Component {
           <Menu
             allWords={this.state.allWords}
             isOpen={this.state.menu}
+            onClick={this.handleLinkChoise}
           />
 
-          <ul>
+          {/*<ul>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -49,7 +55,7 @@ class App extends Component {
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
-          </ul>
+          </ul>*/}
 
 
 
@@ -57,20 +63,12 @@ class App extends Component {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/about">
-              <div id="container">
-                <ShowWord wordSet={this.state.allWords} />
-              </div>
-            </Route>
-            <Route path="/dashboard">
-              <Dashboard />
+            <Route path="/showWord">
+              <ShowWord wordSet={this.state.allWords[0].wordSet} />
             </Route>
           </Switch>
-
-
         </div>
       </Router >
-
     );
   }
 }
@@ -79,24 +77,11 @@ class App extends Component {
 function Home() {
   return (
     <div className="feedBack">
+
     </div>
   );
 }
 
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
 
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
 
 export default App;

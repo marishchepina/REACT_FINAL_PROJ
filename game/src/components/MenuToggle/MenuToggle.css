@@ -1,14 +1,13 @@
 .menuToggle {
-    position: fixed;
-    top: 40px;
-    right: 40px;
-    font-size: 3rem;
+    position: absolute;
+    top: 30px;
+    right: 6%;
+    font-size: 2.7rem;
     cursor: pointer;
     color: #fff;
-    transition: opacity, right .3s ease-in;
+    transition: right .3s ease-in;
     z-index: 999;
-}
-
-.menuToggle:hover {
-    opacity: .7;
+    padding: 1.3rem 1.3rem 1rem 1.3rem;
+    border-radius: 5px;
+    background: #16a085;
 }

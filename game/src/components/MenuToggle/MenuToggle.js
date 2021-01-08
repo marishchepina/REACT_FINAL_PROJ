@@ -5,7 +5,7 @@ const MenuToggle = props => {
     const cls = ['menuToggle', 'fa']
     if (props.isOpen) {
         cls.push('fa-times')
-        //cls.push('menuToggle--open')
+        cls.push('menuToggle--open')
     } else {
         cls.push('fa-bars')
     }

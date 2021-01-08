@@ -5,7 +5,7 @@
   outline: 0;
 }
 
-html, body, #root, #container, #container>div {
+html, body, #root, .container, .container>div {
   height: 100vh;
 }
 
@@ -33,26 +33,25 @@ a {
   display: none
 }
 
-#container {
+#root .container {
   margin: 0 auto;
   width: 100%;
-  padding: 0 5% 20px 5%;
   position: relative;
+  padding: 0 5% 20px 5%;
   max-width: 800px;
   font-size: 6rem;
   line-height: 6rem;
 }
 
-#container div {
+.container div {
   width: 100%;
   text-align: center;
 }
 
-#container>div {
+.container>div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 2rem;
 }
 
 .feedBack {

@@ -6,31 +6,31 @@ let AllWordLists4 = [
                 'id': 'clever',
                 'word': 'clever',
                 'translate': 'розумний',
-                //'img': 'img/4-l1/1.gif'
+                'img': './img/4-l1/1.gif'
             },
             {
                 'id': 'niece',
                 'word': 'niece',
                 'translate': 'племінниця',
-                //'img': 'img/4-l1/2.jpg'
+                'img': './img/4-l1/2.jpg'
             },
             {
                 'id': 'nephew',
                 'word': 'nephew',
                 'translate': 'племінник',
-                // 'img': 'img/4-l1/3.jpg'
+                'img': './img/4-l1/3.jpg'
             },
             {
                 'id': 'friendly',
                 'word': 'friendly',
                 'translate': 'дружелюбний',
-                //'img': 'img/4-l1/4.gif'
+                'img': './img/4-l1/4.gif'
             },
             {
                 'id': 'helpful',
                 'word': 'helpful',
                 'translate': 'корисний',
-                //'img': 'img/4-l1/5-1.jpg'
+                'img': './img/4-l1/5-1.jpg'
             }
         ]
     },
@@ -41,37 +41,37 @@ let AllWordLists4 = [
                 'id': 'laptop',
                 'word': 'laptop',
                 'translate': 'ноутбук',
-                //'img': 'img/4-l2/1.jpg'
+                'img': './img/4-l2/1.jpg'
             },
             {
                 'id': 'binoculars',
                 'word': 'binoculars',
                 'translate': 'бінокль',
-                //'img': 'img/4-l2/2.jpg'
+                'img': './img/4-l2/2.jpg'
             },
             {
                 'id': 'compass',
                 'word': 'compass',
                 'translate': 'компас',
-                //'img': 'img/4-l2/3.jpg'
+                'img': './img/4-l2/3.jpg'
             },
             {
                 'id': 'can opener',
                 'word': 'can opener',
                 'translate': 'консервний ніж',
-                //'img': 'img/4-l2/4.jpg'
+                'img': './img/4-l2/4.jpg'
             },
             {
                 'id': 'diary',
                 'word': 'diary',
                 'translate': 'щоденник',
-                //'img': 'img/4-l2/6.jpg'
+                'img': './img/4-l2/6.jpg'
             },
             {
                 'id': 'torch',
                 'word': 'torch',
                 'translate': 'фонарик',
-                // 'img': 'img/4-l2/7.jpg'
+                'img': './img/4-l2/7.jpg'
             }
         ]
     },
@@ -82,43 +82,43 @@ let AllWordLists4 = [
                 'id': 'well',
                 'word': 'well',
                 'translate': 'добре',
-                // 'img': 'img/4-l3/1.png'
+                'img': './img/4-l3/1.png'
             },
             {
                 'id': 'carefully',
                 'word': 'carefully',
                 'translate': 'обережно',
-                //'img': 'img/4-l3/2.jpg'
+                'img': './img/4-l3/2.jpg'
             },
             {
                 'id': 'badly',
                 'word': 'badly',
                 'translate': 'погано',
-                //  'img': 'img/4-l3/3.jpg'
+                'img': './img/4-l3/3.jpg'
             },
             {
                 'id': 'slowly',
                 'word': 'slowly',
                 'translate': 'повільно',
-                //  'img': 'img/4-l3/4.jpg'
+                'img': './img/4-l3/4.jpg'
             },
             {
                 'id': 'quietly',
                 'word': 'quietly',
                 'translate': 'тихо',
-                // 'img': 'img/4-l3/5.jpg'
+                'img': './img/4-l3/5.jpg'
             },
             {
                 'id': 'happily',
                 'word': 'happily',
                 'translate': 'щасливо',
-                // 'img': 'img/4-l3/6.jpg'
+                'img': './img/4-l3/6.jpg'
             },
             {
                 'id': 'quickly',
                 'word': 'quickly',
                 'translate': 'швидко',
-                // 'img': 'img/4-l3/6-1.jpg'
+                'img': './img/4-l3/6-1.jpg'
             }
 
         ]

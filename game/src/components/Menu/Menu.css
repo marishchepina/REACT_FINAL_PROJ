@@ -1,29 +1,73 @@
-.menu {
+.nav {
     position: fixed;
     right: 0;
     top: 0;
     bottom: 0;
     width: 100%;
     padding: 100px 4%;
-    background: darkolivegreen;
+    background: #16a085;
     transform: translateX(0px);
     transition: transform .22s ease-in;
     z-index: 90;
 }
 
-.menu--close {
+.nav--close {
     transform: translateX(100%);
 }
 
-.menu li {
-    margin-bottom: 20px;
-}
-
-.menu li a {
+.nav li a {
     color: #fff;
-    transition: opacity .3m;
+    padding: 2rem 0 2rem 0;
+    display: block;
+    text-align: center;
+    font-size: 3.5rem
 }
 
-.menu li a:hover, .menu li a:active {
-    opacity: .7;
+.nav>ul>li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+}
+
+.nav>ul>li:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: #3bc1a0;
+    -webkit-transition: width .5s ease;
+    transition: width .5s ease;
+}
+
+.nav>ul>li:hover:before {
+    width: 0;
+    background: #3bc1a0;
+    -webkit-transition: width .5s ease;
+    transition: width 1s ease;
+}
+
+.nav>ul>li:hover:after {
+    width: 0;
+    background: transparent;
+    -webkit-transition: width 0s ease;
+    transition: width 0.5s ease;
+}
+
+.nav--open>ul>li {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    color: #dadada;
+    width: 100%;
+    -webkit-transition: color .5s ease, padding .5s ease;
+    -moz-transition: color .5s ease, padding .5s ease;
+    transition: color .5s ease, padding .5s ease;
 }

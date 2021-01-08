@@ -1,21 +1,30 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
+import React from 'react'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    NavLink
+} from "react-router-dom";
 import './Menu.css'
 
 
 const Menu = props => {
-    console.log(props)
 
-    const cls = ['menu']
+    const cls = ['nav']
     if (!props.isOpen) {
-        cls.push('menu--close')
+        cls.push('nav--close')
     }
+    else { cls.push('nav--open') }
 
     let links = props.allWords.map(el =>
         <li key={el.lessonNumb}>
-            <a href="/">Урок {el.lessonNumb}</a>
+            <Link to="/showWord" onClick={event => props.onClick(el.lessonNumb)}>
+                Урок {el.lessonNumb}
+            </Link>
         </li>
     )
+
     return (
         <nav className={cls.join(' ')}>
             <ul>
@@ -24,9 +33,6 @@ const Menu = props => {
         </nav>
     )
 }
-
-
-
 
 
 export default Menu
