@@ -121,7 +121,7 @@ let AllWordLists4 = [
                 'img': './img/4-l3/6-1.jpg'
             }
 
-        ]
+        ],
     }
 
 

@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import AllWordLists4 from './data'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ShowWord from './components/ShowWord/ShowWord'
 import MenuToggle from './components/MenuToggle/MenuToggle'
 import Menu from './components/Menu/Menu'
@@ -15,9 +10,12 @@ class App extends Component {
     super();
     this.state = {
       menu: false,
-      allWords: AllWordLists4
+      key: 1,
+      allWords: AllWordLists4,
+      activeWordSet: AllWordLists4[0].wordSet
     }
   }
+
 
   toggleMenuHandler = () => {
     this.setState({
@@ -26,8 +24,13 @@ class App extends Component {
   }
 
 
-  handleLinkChoise = (nuber) => {
-    console.log(nuber)
+  handleLinkChoise = (linkNuber) => {
+    console.log(linkNuber)
+    this.setState({
+      menu: false,
+      key: Math.random(),
+      activeWordSet: AllWordLists4[linkNuber - 1].wordSet
+    })
   }
 
 
@@ -45,26 +48,13 @@ class App extends Component {
             onClick={this.handleLinkChoise}
           />
 
-          {/*<ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-          </ul>*/}
-
-
 
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/showWord">
-              <ShowWord wordSet={this.state.allWords[0].wordSet} />
+            <Route exact path="/"><Home /></Route>
+            <Route
+
+            >
+              <ShowWord key={this.state.key} wordSet={this.state.activeWordSet} />
             </Route>
           </Switch>
         </div>
@@ -77,11 +67,10 @@ class App extends Component {
 function Home() {
   return (
     <div className="feedBack">
-
+      <img className="img--resp" src='./img/emotion/music.gif' alt='' />
     </div>
   );
 }
-
 
 
 export default App;
