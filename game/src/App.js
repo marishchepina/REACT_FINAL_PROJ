@@ -25,7 +25,6 @@ class App extends Component {
 
 
   handleLinkChoise = (linkNuber) => {
-    console.log(linkNuber)
     this.setState({
       menu: false,
       key: Math.random(),

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
+//import ReactAudioPlayer from 'react-audio-player';
 import './ShowWord.css'
 
 
 function ShowWord({ wordSet }) {
-    console.log(wordSet)
     const [wordToShow, setwordToShow] = useState(wordSet[0]);
 
     useEffect(() => {
@@ -15,7 +14,7 @@ function ShowWord({ wordSet }) {
                 i++
             }
             else { i = 0 }
-        }, 2000);
+        }, 5000);
         return () => clearInterval(interval);
     }, []);
 
@@ -33,7 +32,8 @@ function ShowWord({ wordSet }) {
                 <div className="showWord__img">
                     <img src={wordToShow.img} />
                 </div>
-                <ReactAudioPlayer src={wordToShow.audio} autoPlay />
+                {/*<ReactAudioPlayer src={wordToShow.audio} autoPlay />*/}
+                <audio src={wordToShow.audio} autoPlay />
             </div>
         </div>
     )
