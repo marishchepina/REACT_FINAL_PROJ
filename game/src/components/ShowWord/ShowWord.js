@@ -20,21 +20,17 @@ function ShowWord({ wordSet }) {
 
 
     return (
-        <div>
-            <div className='container'>
-                <div className="showWord__word">
-                    {wordToShow.word}
-                    <div className="showWord__translate">
-                        {wordToShow.translate}
-                    </div>
+        <div className="showWord">
+            <div className="showWord__word">
+                {wordToShow.word}
+                <div className="showWord__translate">
+                    {wordToShow.translate}
                 </div>
-
-                <div className="showWord__img">
-                    <img src={wordToShow.img} />
-                </div>
-                {/*<ReactAudioPlayer src={wordToShow.audio} autoPlay />*/}
-                <audio src={wordToShow.audio} autoPlay />
             </div>
+            <div className="showWord__img">
+                <img src={wordToShow.img} />
+            </div>
+            <audio src={wordToShow.audio} autoPlay />
         </div>
     )
 }

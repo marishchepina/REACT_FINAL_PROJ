@@ -1,6 +1,10 @@
+.showWord {
+    padding-bottom: 3rem;
+}
+
 .showWord__word {
     max-height: 38%;
-    padding-top: 125px;
+    padding-top: 115px;
     font-weight: bold;
     text-align: center;
 }

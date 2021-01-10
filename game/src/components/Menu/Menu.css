@@ -33,6 +33,10 @@
     width: 100%;
 }
 
+.nav>ul>li .fa-arrow-up {
+    font-size: 3rem;
+}
+
 .nav>ul>li:after {
     content: '';
     display: block;

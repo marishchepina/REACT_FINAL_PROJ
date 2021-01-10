@@ -1,7 +1,6 @@
 import React from 'react'
 import { withRouter, Link } from "react-router-dom";
 import './Menu.css'
-//import HomePageLink from './HomePageLink'
 
 
 const Menu = props => {
@@ -14,7 +13,6 @@ const Menu = props => {
     let links = props.allWords.map(el =>
         <li key={el.lessonNumb}>
             <Link
-                //to='/showWord'
                 to={'/showWord/' + el.lessonNumb}
                 onClick={event => props.onClick(el.lessonNumb)}
             >
@@ -26,9 +24,13 @@ const Menu = props => {
     return (
         <nav className={cls.join(' ')}>
             <ul>
-                {/*<li onClick={() => {props.history.push('/');  //props.state.menu = false;}}>
+                <li onClick={() => {
+                    props.history.push('/');
+                    props.onClick(1)
+                }}
+                >
                     <a className="fa fa-arrow-up" aria-hidden="true"></a>
-    </li>*/}
+                </li>
                 {links}
             </ul>
         </nav >

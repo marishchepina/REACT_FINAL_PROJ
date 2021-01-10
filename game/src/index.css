@@ -39,8 +39,8 @@ a {
   margin: 0 auto;
   width: 100%;
   position: relative;
-  padding: 0 5% 20px 5%;
-  max-width: 600px;
+  padding: 0 5% 3rem 5%;
+  max-width: 60rem;
   font-size: 6rem;
   line-height: 6rem;
 }
@@ -54,20 +54,4 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.feedBack {
-  width: 100%;
-  height: 100%;
-  padding: 3%;
-  color: #fff;
-  z-index: -1;
-  line-height: 4.2rem;
-  font-size: 4rem;
-  position: fixed;
-  right: 0;
-  top: 0;
-  background-size: cover;
-  background: rgb(240, 146, 78)
-  /*url("../public/img/emotion/music.gif") center 8.2rem;*/
 }
