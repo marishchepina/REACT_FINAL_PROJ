@@ -10,13 +10,14 @@ const Menu = props => {
     }
     else { cls.push('nav--open') }
 
-    let links = props.allWords.map(el =>
-        <li key={el.lessonNumb}>
+
+    let links = props.allWords.map((el, i) =>
+        <li key={i + 1}>
             <Link
-                to={'/showWord/' + el.lessonNumb}
-                onClick={event => props.onClick(el.lessonNumb)}
+                to='/showWord'
+                onClick={event => props.onClick(i + 1)}
             >
-                Урок {el.lessonNumb}
+                Урок {i + 1}
             </Link>
         </li>
     )

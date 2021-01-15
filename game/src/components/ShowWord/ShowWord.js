@@ -1,35 +1,20 @@
-import React, { useState, useEffect } from 'react';
 import './ShowWord.css'
 
 
-function ShowWord({ wordSet }) {
-    const [wordToShow, setwordToShow] = useState(wordSet[0]);
-
-    useEffect(() => {
-        let i = 0
-        const interval = setInterval(() => {
-            if (i < wordSet.length) {
-                setwordToShow(wordSet[i]);
-                i++
-            }
-            else { i = 0 }
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
-
-
+const ShowWord = props => {
+    console.log(props)
     return (
         <div className="showWord">
             <div className="showWord__word">
-                {wordToShow.word}
+                {word.word}
                 <div className="showWord__translate">
-                    {wordToShow.translate}
+                    {word.translate}
                 </div>
             </div>
             <div className="showWord__img">
-                <img src={wordToShow.img} />
+                <img src={word.img} />
             </div>
-            <audio src={wordToShow.audio} autoPlay />
+            <audio src={word.audio} autoPlay />
         </div>
     )
 }

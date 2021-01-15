@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AllWordsList from './data'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ShowWord from './components/ShowWord/ShowWord'
@@ -10,8 +10,8 @@ import Home from './components/Home/Home'
 
 function App() {
   const [menu, setMenu] = useState(false)
-  const [key, setKey] = useState(1)
-  const [activeWordSet, setActiveWordSet] = useState(AllWordsList[0].wordSet)
+  const [activeLesson, setActiveLesson] = useState(AllWordsList[0])
+  const [wordToShow, setwordToShow] = useState(activeLesson[0]);
 
 
   const toggleMenuHandler = () => {
@@ -20,9 +20,18 @@ function App() {
 
 
   const handleLinkChoise = (linkNuber) => {
+    let i = 0
     setMenu(false)
-    setKey(Math.random())
-    setActiveWordSet(AllWordsList[linkNuber - 1].wordSet)
+    setActiveLesson(AllWordsList[linkNuber])
+    console.log(AllWordsList[linkNuber])
+    setInterval(() => {
+      if (i < activeLesson.length) {
+        setwordToShow(activeLesson[i].word);
+        console.log(activeLesson[i].word)
+        i++
+      }
+      else { i = 0 }
+    }, 5000);
   }
 
 
@@ -32,7 +41,7 @@ function App() {
       <div className='container'>
         <MenuToggle
           onToggle={toggleMenuHandler}
-          sisOpen={menu}
+          isOpen={menu}
         />
         <Menu
           allWords={AllWordsList}
@@ -41,18 +50,11 @@ function App() {
         />
         <Switch>
           <Route exact path="/"><Home /></Route>
-          <Route>
-            <ShowWord
-              key={key}
-              wordSet={activeWordSet}
-            />
-          </Route>
+          <Route><ShowWord word={wordToShow} /></Route>
         </Switch>
       </div>
     </Router >
   )
 }
-
-
 
 export default App;
