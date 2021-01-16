@@ -1,4 +1,4 @@
-let AllWordsList = [
+const AllWordsList = [
     [
         {
             'word': 'clever',

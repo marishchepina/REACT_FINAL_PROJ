@@ -6,15 +6,15 @@ const ShowWord = props => {
     return (
         <div className="showWord">
             <div className="showWord__word">
-                {word.word}
+                {props.word.word}
                 <div className="showWord__translate">
-                    {word.translate}
+                    {props.word.translate}
                 </div>
             </div>
             <div className="showWord__img">
-                <img src={word.img} />
+                <img src={props.word.img} />
             </div>
-            <audio src={word.audio} autoPlay />
+            <audio src={props.word.audio} autoPlay />
         </div>
     )
 }

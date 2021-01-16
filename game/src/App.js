@@ -7,7 +7,6 @@ import Menu from './components/Menu/Menu'
 import Home from './components/Home/Home'
 
 
-
 function App() {
   const [menu, setMenu] = useState(false)
   const [activeLesson, setActiveLesson] = useState(AllWordsList[0])
@@ -19,18 +18,21 @@ function App() {
   }
 
 
+
   const handleLinkChoise = (linkNuber) => {
+
     let i = 0
+    let intervalId = 0
     setMenu(false)
-    setActiveLesson(AllWordsList[linkNuber])
-    console.log(AllWordsList[linkNuber])
-    setInterval(() => {
-      if (i < activeLesson.length) {
-        setwordToShow(activeLesson[i].word);
-        console.log(activeLesson[i].word)
-        i++
+    setActiveLesson(AllWordsList[linkNuber - 1])
+    setwordToShow(activeLesson[0])
+    intervalId = setInterval(() => {
+      setwordToShow(activeLesson[i])
+      i++
+      if (i === activeLesson.length) {
+        i = 0
+        clearInterval(intervalId)
       }
-      else { i = 0 }
     }, 5000);
   }
 
