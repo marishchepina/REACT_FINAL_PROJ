@@ -10,30 +10,31 @@ import Home from './components/Home/Home'
 function App() {
   const [menu, setMenu] = useState(false)
   const [activeLesson, setActiveLesson] = useState(AllWordsList[0])
-  const [wordToShow, setwordToShow] = useState(activeLesson[0]);
+  const [wordToShow, setwordToShow] = useState(activeLesson[0])
+  const [intervalId, setIntervalId] = useState(0)
 
 
   const toggleMenuHandler = () => {
     setMenu(!menu)
+    clearInterval(intervalId)
   }
 
 
 
   const handleLinkChoise = (linkNuber) => {
-
+    const tmpActiveLesson = AllWordsList[linkNuber - 1]
     let i = 0
-    let intervalId = 0
     setMenu(false)
-    setActiveLesson(AllWordsList[linkNuber - 1])
-    setwordToShow(activeLesson[0])
-    intervalId = setInterval(() => {
-      setwordToShow(activeLesson[i])
+    setActiveLesson(tmpActiveLesson)
+    setwordToShow(tmpActiveLesson[0])
+    let intervalIdTmp = setInterval(() => {
+      setwordToShow(tmpActiveLesson[i])
       i++
       if (i === activeLesson.length) {
         i = 0
-        clearInterval(intervalId)
       }
-    }, 5000);
+    }, 2500)
+    setIntervalId(intervalIdTmp);
   }
 
 
