@@ -1,4 +1,4 @@
-import './ShowWord.css'
+import './ShowWord.scss'
 
 
 const ShowWord = props => {

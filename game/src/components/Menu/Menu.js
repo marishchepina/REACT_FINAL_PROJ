@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter, Link } from "react-router-dom";
-import './Menu.css'
+import './Menu.scss'
 
 
 const Menu = props => {

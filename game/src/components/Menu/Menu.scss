@@ -1,0 +1,92 @@
+$green: #16a085;
+
+@mixin elTransformX($numb) {
+    -webkit-transform: translateX($numb);
+    -moz-transform: translateX($numb);
+    -ms-transform: translateX($numb);
+    transform: translateX($numb);
+}
+
+@mixin liTransition {
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+    -webkit-transition: opacity 0.5s 0.2s, -webkit-transform 0.5s 0.34s;
+    -moz-transition: opacity 0.5s 0.2s, -moz-transform 0.5s 0.34s;
+    -ms-transition: opacity 0.5s 0.2s, -ms-transform 0.5s 0.34s;
+    transition: opacity 0.5s 0.2s, transform 0.5s 0.34s;
+}
+
+@mixin lineTransition($speed) {
+    background-color: lighten($green, 10%);
+    -moz-transition: width $speed ease;
+    -ms-transition: width $speed ease;
+    -webkit-transition: width $speed ease;
+    transition: width $speed ease;
+}
+
+.nav {
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 100px 4%;
+    background: $green;
+    transform: translateX(0px);
+    transition: transform 0.3s ease-in;
+    z-index: 90;
+    li {
+        position: relative;
+        @include liTransition;
+
+        &:before,
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+        }
+
+        &:after {
+            left: 0;
+            @include lineTransition(0.8s);
+        }
+
+        &:hover:before {
+            @include lineTransition(1.1s);
+        }
+
+        &:hover:after,
+        &:hover:before {
+            width: 0;
+        }
+
+        a {
+            color: #fff;
+            padding: 2rem;
+            display: block;
+            text-align: center;
+            font-size: 3.5rem;
+        }
+
+        .fa-arrow-up {
+            font-size: 3rem;
+        }
+    }
+}
+
+.nav--close {
+    @include elTransformX(100%);
+}
+
+.nav--open {
+    li {
+        opacity: 1;
+        @include elTransformX(0%);
+    }
+}
