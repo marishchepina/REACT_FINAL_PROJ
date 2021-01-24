@@ -1,8 +1,9 @@
 import './ShowWord.scss'
+import MyImage from '../../assets/img/4-l1/1.gif';
 
 
 const ShowWord = props => {
-    console.log(props)
+    console.log('props: ' + props.img)
     return (
         <div className="showWord">
             <div className="showWord__word">
