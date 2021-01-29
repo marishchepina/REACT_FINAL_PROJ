@@ -1,9 +1,7 @@
 import './ShowWord.scss'
-import MyImage from '../../assets/img/4-l1/1.gif';
-
 
 const ShowWord = props => {
-    console.log('props: ' + props.img)
+    console.log(props.img)
     return (
         <div className="showWord">
             <div className="showWord__word">
@@ -20,4 +18,26 @@ const ShowWord = props => {
     )
 }
 
-export default ShowWord
+const CompareWord = props => {
+    console.log(props.activeLesson)
+    let images = props.activeLesson.map((img, imgNum) =>
+        <div className="compareWord__imgWrap"
+            key={imgNum}
+            onClick={event => props.onClick(imgNum)}>
+            <img
+                src={img.img}
+                className="img--resp" />
+        </div>
+    )
+    return (
+        <div className="showWord">
+            <div className="showWord__word">
+                {props.word.word}
+            </div>
+            <audio src={props.word.audio} autoPlay />
+            {images}
+        </div>
+    )
+}
+
+export default (ShowWord, CompareWord)

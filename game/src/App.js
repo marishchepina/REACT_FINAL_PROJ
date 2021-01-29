@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AllWordsList from './data'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ShowWord from './components/ShowWord/ShowWord'
+import CompareWord from './components/ShowWord/ShowWord'
 import MenuToggle from './components/MenuToggle/MenuToggle'
 import Menu from './components/Menu/Menu'
 import Home from './components/Home/Home'
@@ -11,9 +12,7 @@ function App() {
   const [menu, setMenu] = useState(false)
   const [activeLesson, setActiveLesson] = useState(AllWordsList[0])
   const [wordToShow, setwordToShow] = useState(activeLesson[0])
-  //const [imgToShow, setimgToShow] = useState('')
   const [intervalId, setIntervalId] = useState(0)
-  //const requestImageFile = require.context(`./assets/img/4-l21`, true)
 
 
   const toggleMenuHandler = () => {
@@ -24,27 +23,45 @@ function App() {
 
 
   const handleLinkChoise = (linkNuber) => {
+    setMenu(false)
     const tmpActiveLesson = AllWordsList[linkNuber - 1]
-    let i = 0
+    const tmpWord = tmpActiveLesson[0]
+    //let i = 0
+    setActiveLesson(tmpActiveLesson)
+    setwordToShow(tmpWord)
+    // setwordToShow(tmpActiveLesson[0])
+    //let intervalIdTmp = setInterval(() => {
+    // setwordToShow(tmpActiveLesson[i])
+    //i++
+    //if (i === activeLesson.length) {
+    //i = 0
+    // }
+    //}, 2500)
+    //setIntervalId(intervalIdTmp);
+  }
+
+  let k = 0
+  const CompareWordChoise = (num) => {
     setMenu(false)
 
-
-    setActiveLesson(tmpActiveLesson)
-    setwordToShow(tmpActiveLesson[0])
-    let intervalIdTmp = setInterval(() => {
-      setwordToShow(tmpActiveLesson[i])
-      //let tmpImgPath = tmpActiveLesson[i].img
-      //const image = require('./assets/img/4-l21/' + 1 + '.gif');
-      //console.log(tmpImgPath)
-      //setimgToShow(image)
-      // console.log(imgToShow)
-      i++
-      if (i === activeLesson.length) {
-        i = 0
+    while (k < activeLesson.length) {
+      console.log(k)
+      console.log('num: ' + num)
+      if (activeLesson[k].word === activeLesson[num].word) {
+        k++
+        setwordToShow(activeLesson[k])
+        return
       }
-    }, 2500)
-    setIntervalId(intervalIdTmp);
+      console.log('while finish')
+      return
+    }
+    if (k === activeLesson.length) {
+      console.log('finish')
+      setwordToShow(activeLesson[0])
+      return;
+    }
   }
+
 
 
 
@@ -58,11 +75,18 @@ function App() {
         <Menu
           allWords={AllWordsList}
           isOpen={menu}
+          //onClick={showWordChoise}
           onClick={handleLinkChoise}
         />
         <Switch>
           <Route exact path="/"><Home /></Route>
-          <Route><ShowWord word={wordToShow} /></Route>
+          <Route>
+            <CompareWord
+              word={wordToShow}
+              activeLesson={activeLesson}
+              onClick={CompareWordChoise}
+            />
+          </Route>
         </Switch>
       </div>
     </Router >
