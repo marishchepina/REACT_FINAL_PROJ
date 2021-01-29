@@ -40,22 +40,23 @@ function App() {
     //setIntervalId(intervalIdTmp);
   }
 
-  let k = 0
+
   const CompareWordChoise = (num) => {
     setMenu(false)
-
-    while (k < activeLesson.length) {
-      console.log(k)
-      console.log('num: ' + num)
-      if (activeLesson[k].word === activeLesson[num].word) {
-        k++
-        setwordToShow(activeLesson[k])
+    let i = 0
+    if (activeLesson[num].word === wordToShow.word) {
+      i = num + 1
+      if (i < activeLesson.length) {
+        setwordToShow(activeLesson[i])
         return
       }
-      console.log('while finish')
-      return
+      else {
+        console.log("TODO: lesson finished ")
+      }
     }
-    if (k === activeLesson.length) {
+
+
+    if (num + 1 === activeLesson.length) {
       console.log('finish')
       setwordToShow(activeLesson[0])
       return;
@@ -75,7 +76,6 @@ function App() {
         <Menu
           allWords={AllWordsList}
           isOpen={menu}
-          //onClick={showWordChoise}
           onClick={handleLinkChoise}
         />
         <Switch>
