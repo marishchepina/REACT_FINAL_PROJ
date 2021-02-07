@@ -1,9 +1,8 @@
-import './ShowWord.scss'
-import MyImage from '../../assets/img/4-l1/1.gif';
+import './Tasks.scss'
 
 
-const ShowWord = props => {
-    console.log('props: ' + props.img)
+const Watch = props => {
+    console.log(props)
     return (
         <div className="showWord">
             <div className="showWord__word">
@@ -20,4 +19,5 @@ const ShowWord = props => {
     )
 }
 
-export default ShowWord
+
+export default Watch 
