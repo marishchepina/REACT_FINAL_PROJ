@@ -1,5 +1,12 @@
 import React from 'react'
-import { withRouter, Link } from "react-router-dom";
+import {
+    withRouter, Link, BrowserRouter as Router,
+    Switch,
+    Route,
+    useParams,
+    useRouteMatch
+} from "react-router-dom";
+import CompareWord from '../ShowWord/ShowWord';
 import './Menu.scss'
 
 
@@ -12,26 +19,30 @@ const Menu = props => {
 
 
     let links = props.allWords.map((el, i) =>
-        <li key={i + 1}>
-            <Link
-                to='/showWord'
-                onClick={event => props.onClick(i + 1)}
-            >
-                Урок {i + 1}
-            </Link>
-        </li>
+        <Router>
+            <li key={i + 1}>
+                <Link
+                    to='/tasks'
+                    onClick={event => props.onClick(i + 1)}
+                >
+                    Урок {i + 1}<br />
+                </Link>
+
+            </li>
+        </Router>
     )
+
 
     return (
         <nav className={cls.join(' ')}>
             <ul>
-                <li onClick={() => {
+                {/*} <li onClick={() => {
                     props.history.push('/');
                     props.onClick(1)
                 }}
                 >
                     <a className="fa fa-arrow-up" aria-hidden="true"></a>
-                </li>
+            </li>*/}
                 {links}
             </ul>
         </nav >

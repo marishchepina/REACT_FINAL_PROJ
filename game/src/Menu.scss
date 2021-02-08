@@ -26,20 +26,43 @@ $green: #16a085;
     transition: width $speed ease;
 }
 
-.nav {
-    min-height: 100vh;
+.task {
+    display: none;
+}
+
+#root .task--open {
+    display: block;
+    background: #fff;
     position: fixed;
+    z-index: 90;
+}
+
+.nav,
+.task {
+    min-height: 100vh;
     left: 0;
     top: 0;
     width: 100%;
-    padding: 100px 4%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 100px 4% 10px 4%;
     background: $green;
     transform: translateX(0px);
     transition: transform 0.3s ease-in;
-    z-index: 90;
-    li {
+
+    & li {
         position: relative;
         @include liTransition;
+        display: block;
+        text-align: center;
+        font-size: 3.5rem;
+        line-height: 4rem;
+        cursor: pointer;
+
+        display: block;
+        color: #fff;
+        width: 100%;
+        padding: 3rem;
 
         &:before,
         &:after {
@@ -66,17 +89,40 @@ $green: #16a085;
             width: 0;
         }
 
-        a {
-            color: #fff;
-            padding: 2rem;
-            display: block;
-            text-align: center;
-            font-size: 3.5rem;
-        }
-
         .fa-arrow-up {
             font-size: 3rem;
         }
+    }
+
+    #root &__buttons {
+        width: 100%;
+        display: none;
+        justify-content: center;
+
+        a {
+            width: auto;
+            margin: 15px 10px 15px 10px;
+            padding: 0;
+            color: #fff;
+
+            & i {
+                border: lighten($green, 10%) 2px solid;
+                width: 80px;
+                height: 80px;
+                border-radius: 5px;
+                background: lighten($green, 3%);
+                font-size: 4rem;
+                padding: 18px 0 0 0;
+                margin: 0 auto;
+
+                &:hover {
+                    background: lighten($green, 6%);
+                }
+            }
+        }
+    }
+    #root &__buttons--open {
+        display: flex;
     }
 }
 
@@ -87,6 +133,7 @@ $green: #16a085;
 .nav--open {
     li {
         opacity: 1;
+        z-index: 90;
         @include elTransformX(0%);
     }
 }
