@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import { useSpring, animated } from 'react-spring'
 import AllWordsList from './data'
 import {
   BrowserRouter as Router,
@@ -134,6 +135,7 @@ export default function App() {
     }
 
 
+
     let links = AllWordsList.map((el, i) =>
       <li key={i + 1} onClick={() => taskButtonsShowHide(i + 1)}>
         Урок {i + 1}
@@ -158,8 +160,10 @@ export default function App() {
         </span>
       </li>
     )
+    const props = useSpring({ opacity: 1, from: { opacity: 0 } })
     return (
-      <div>
+
+      <animated.div style={props}>
         <ul className={cls.join(' ')}>
           {links}
         </ul>
@@ -172,7 +176,7 @@ export default function App() {
             }
           </Switch >
         </div>
-      </div>
+      </animated.div>
     );
   }
 
