@@ -18,9 +18,13 @@ import TypeComponent from './components/Tasks/Type'
 export default function App() {
   const [menu, setMenu] = useState(false)
   const [task, setTask] = useState(false)
+  // const [buttons, setButtons] = useState(false)
   const [activeLesson, setActiveLesson] = useState(AllWordsList[0])
   const [activeWord, setactiveWord] = useState(activeLesson[0])
   const [intervalId, setIntervalId] = useState(0)
+  const [success, setsuccess] = useState(false)
+  const [defeat, setdefeat] = useState(false)
+  const [finished, setfinished] = useState(false)
 
   const routes = [
     {
@@ -68,6 +72,7 @@ export default function App() {
     setTask(true)
     let i = 0
     if (activeLesson[linkNuber].word === activeWord.word) {
+      setsuccess(true)
       i = linkNuber + 1
       if (i < activeLesson.length) {
         setactiveWord(activeLesson[i])
@@ -98,9 +103,13 @@ export default function App() {
     clearInterval(intervalId)
   }
 
+
+
   function Menu({ routes }) {
+
     const cls = ['nav']
     const clsTask = ['task']
+    const clsButtons = ['nav__buttons']
     if (!menu) {
       cls.push('nav--close')
     }
@@ -113,12 +122,22 @@ export default function App() {
     else {
       clsTask.push('task--open')
     }
+    // if (buttons) {
+    //  clsButtons.push('nav__buttons--open')
+    // }
+
+    const taskButtonsShowHide = (linkNuber) => {
+      console.log(this)
+      // setButtons(true)
+      //this.clsButtons.push('nav__buttons--open')
+      //console.log(linkNuber)
+    }
 
 
     let links = AllWordsList.map((el, i) =>
-      <li key={i + 1}>
+      <li key={i + 1} onClick={() => taskButtonsShowHide(i + 1)}>
         Урок {i + 1}
-        <span className="nav__buttons nav__buttons--open">
+        <span className='nav__buttons nav__buttons--open'>
           <Link
             onClick={() => handleWatch(i + 1)}
             key={'watch--' + i} to={`menu/watch`}>
@@ -181,10 +200,7 @@ export default function App() {
               <MenuToggle
                 onToggle={toggleMenuHandler}
                 isOpen={menu} />
-              {/*<Menu
-                allWords={AllWordsList}
-                isOpen={menu}
-              onClick={handleLinkChoise} />*/}
+
             </Link>
           </li>
         </ul>
