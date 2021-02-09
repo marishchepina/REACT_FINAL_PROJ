@@ -63,7 +63,7 @@ export default function App() {
       if (i === activeLesson.length) {
         i = 0
       }
-    }, 2500)
+    }, 4000)
     setIntervalId(intervalIdTmp);
   }
 
@@ -123,9 +123,7 @@ export default function App() {
     else {
       clsTask.push('task--open')
     }
-    // if (buttons) {
-    //  clsButtons.push('nav__buttons--open')
-    // }
+
 
     const taskButtonsShowHide = (linkNuber) => {
       console.log(this)
@@ -160,23 +158,27 @@ export default function App() {
         </span>
       </li>
     )
-    const props = useSpring({ opacity: 1, from: { opacity: 0 } })
+    const props = useSpring({
+      opacity: 1,
+      from: { opacity: 0, transition: 'all 0.1s ease-in' }
+    })
     return (
-
-      <animated.div style={props}>
-        <ul className={cls.join(' ')}>
-          {links}
-        </ul>
-        <div className={clsTask.join(' ')}>
-          <Switch>
-            {
-              routes.map((route, i) => (
-                <RouteWithSubRoutes key={i} {...route} />
-              ))
-            }
-          </Switch >
-        </div>
-      </animated.div>
+      <div className="taskWrap">
+        <animated.div style={props}>
+          <ul className={cls.join(' ')}>
+            {links}
+          </ul >
+          <div className={clsTask.join(' ')}>
+            <Switch>
+              {
+                routes.map((route, i) => (
+                  <RouteWithSubRoutes key={i} {...route} />
+                ))
+              }
+            </Switch >
+          </div>
+        </animated.div >
+      </div >
     );
   }
 
