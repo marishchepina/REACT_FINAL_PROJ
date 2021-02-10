@@ -19,13 +19,15 @@ import TypeComponent from './components/Tasks/Type'
 export default function App() {
   const [menu, setMenu] = useState(false)
   const [task, setTask] = useState(false)
-  // const [buttons, setButtons] = useState(false)
   const [activeLesson, setActiveLesson] = useState(AllWordsList[0])
   const [activeWord, setactiveWord] = useState(activeLesson[0])
   const [intervalId, setIntervalId] = useState(0)
-  const [success, setsuccess] = useState(false)
-  const [defeat, setdefeat] = useState(false)
-  const [finished, setfinished] = useState(false)
+  const [value, setValue] = useState('')
+  const [typed, setTyped] = useState('');
+
+  //const [success, setsuccess] = useState(false)
+  //const [defeat, setdefeat] = useState(false)
+  //const [finished, setfinished] = useState(false)
 
   const routes = [
     {
@@ -73,7 +75,7 @@ export default function App() {
     setTask(true)
     let i = 0
     if (activeLesson[linkNuber].word === activeWord.word) {
-      setsuccess(true)
+      //setsuccess(true)
       i = linkNuber + 1
       if (i < activeLesson.length) {
         setactiveWord(activeLesson[i])
@@ -91,11 +93,41 @@ export default function App() {
   }
 
 
-  const handleType = (linkNuber) => {
-    console.log(linkNuber)
+  const handleType = (linkNuber, lessonNumber) => {
     setMenu(false)
     setTask(true)
+    console.log(linkNuber)
+    const tmpActiveLesson = AllWordsList[linkNuber - 1]
+    const tmpWord = tmpActiveLesson[lessonNumber]
+    setActiveLesson(tmpActiveLesson)
+    setactiveWord(tmpWord)
+    console.log(activeWord)
   }
+
+
+  const handleSubmit = event => {
+    let i = 0
+    if (value === activeWord.word) {
+      for (i = 0; activeLesson.length; i++) {
+        if (activeLesson[i].word == value) {
+          if (i < activeLesson.length) {
+            handleType(1, i + 1);
+            return;
+          } else {
+            //lesson finished
+          }
+        }
+      }
+      console.log('tada')
+    }
+    setValue('')
+    event.preventDefault()
+  };
+
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
 
 
   const toggleMenuHandler = () => {
@@ -125,17 +157,9 @@ export default function App() {
     }
 
 
-    const taskButtonsShowHide = (linkNuber) => {
-      console.log(this)
-      // setButtons(true)
-      //this.clsButtons.push('nav__buttons--open')
-      //console.log(linkNuber)
-    }
-
-
 
     let links = AllWordsList.map((el, i) =>
-      <li key={i + 1} onClick={() => taskButtonsShowHide(i + 1)}>
+      <li key={i + 1}>
         Урок {i + 1}
         <span className='nav__buttons nav__buttons--open'>
           <Link
@@ -150,7 +174,7 @@ export default function App() {
             <i className="fas fa-dice"></i>
           </Link>
           <Link
-            onClick={() => handleType(i + 1)}
+            onClick={() => handleType(i + 1, 0)}
             key={'type--' + i}
             to={`menu/type`}>
             <i className="fas fa-keyboard"></i>
@@ -192,7 +216,7 @@ export default function App() {
   }
 
   function Type() {
-    return <TypeComponent />;
+    return <TypeComponent word={activeWord} onSubmit={handleSubmit} value={value} onChange={handleChange} />;
   }
 
 

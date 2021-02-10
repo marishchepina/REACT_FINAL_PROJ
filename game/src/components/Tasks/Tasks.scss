@@ -26,6 +26,8 @@ $green: #16a085;
         line-height: 3.5rem;
         font-weight: normal;
         margin-bottom: 2rem;
+        width: 100%;
+        text-align: center;
     }
 
     &__img {
@@ -39,6 +41,35 @@ $green: #16a085;
             height: 100%;
             object-fit: contain;
         }
+    }
+
+    &__input {
+        border: none;
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+        font-size: 40px;
+        line-height: 40px;
+        margin-top: -2rem;
+        border-bottom: 1px solid $green;
+    }
+
+    &__button {
+        display: block;
+        cursor: pointer;
+        margin: 20px auto;
+        color: #fff;
+        background: $green;
+        border-radius: 5px;
+        border: none;
+        padding: 10px 20px 10px 20px;
+        font: 2.4rem/2.7rem "Open Sans", sans-serif;
+    }
+
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
     }
 }
 

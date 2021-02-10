@@ -42,7 +42,8 @@ body {
 }
 
 #root {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   .container {
     margin: 0 auto;
     position: relative;
