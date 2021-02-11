@@ -90,15 +90,17 @@ $green: #16a085;
             width: 0;
         }
 
-        .fa-arrow-up {
-            font-size: 3rem;
+        p {
+            width: 100%;
         }
     }
 
-    #root &__buttons {
-        width: 100%;
-        display: none;
+    &__buttons {
+        //display: none;
         justify-content: center;
+        opacity: 0;
+        width: 0;
+        transition: all 0.4s ease-in;
 
         a {
             width: auto;
@@ -123,11 +125,11 @@ $green: #16a085;
             }
         }
     }
-    &__buttons--close {
-        display: none;
-    }
-    #root &__buttons--open {
+
+    #root .nav--open li:hover &__buttons {
         display: flex;
+        opacity: 1;
+        width: 100%;
     }
 }
 
@@ -137,9 +139,13 @@ $green: #16a085;
 
 .nav--open {
     li {
+        text-align: left;
         opacity: 1;
         z-index: 90;
         @include elTransformX(0%);
+        &:hover {
+            text-align: center;
+        }
     }
 }
 

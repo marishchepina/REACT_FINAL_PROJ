@@ -242,7 +242,7 @@ export default function App() {
     )
     const menuAnimation = useSpring({
       opacity: '1', transform: 'translateX(0%)',
-      from: { opacity: '0', transform: 'translateX(100%)', transition: 'all 0.s linear' }
+      from: { opacity: '0', transform: 'translateX(100%)', transition: 'all 0.3s linear' }
     })
     const linksAnimation = useSpring({
       transform: 'translateX(0%)',
