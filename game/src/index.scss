@@ -66,22 +66,13 @@ body {
   }
 }
 
-.whiteBg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  z-index: 9;
-}
-
 .success__img,
 .defeat__img {
   display: none;
 }
 
-.success {
+.success,
+.defeat {
   position: absolute;
   left: 0;
   top: 0;
@@ -89,27 +80,17 @@ body {
   height: 100%;
   background: #e55842;
   z-index: 999;
+}
 
-  & .success__img {
+.success {
+  & &__img {
     display: block;
+    padding: 5%;
   }
 }
 
 .defeat {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #f5b355;
-  z-index: 999;
-
-  &__img {
-    height: 100%;
-    width: auto;
-  }
-
-  & .defeat__img {
+  & &__img {
     display: block;
   }
 }

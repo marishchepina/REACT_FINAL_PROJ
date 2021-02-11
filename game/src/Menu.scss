@@ -33,7 +33,7 @@ $green: #16a085;
 #root .task--open {
     display: block;
     background: #fff;
-    position: absolute;
+    position: fixed;
     z-index: 90;
     overflow: hidden;
 }

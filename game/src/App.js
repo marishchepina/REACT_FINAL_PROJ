@@ -23,8 +23,6 @@ export default function App() {
   const [activeWord, setactiveWord] = useState(activeLesson[0])
   const [intervalId, setIntervalId] = useState(0)
   const [value, setValue] = useState('')
-
-
   const [success, setsuccess] = useState(false)
   const [defeat, setdefeat] = useState(false)
   //const [finished, setfinished] = useState(false)
@@ -90,16 +88,13 @@ export default function App() {
         setsuccess(false)
         i = linkNuber + 1
         if (i < tmpActiveLesson.length) {
-
           setactiveWord(tmpActiveLesson[i])
           return
-
         }
         else {
-          // props.value = ""
           console.log("TODO: lesson finished ")
         }
-      }, 2500)
+      }, 4000)
     }
     if (linkNuber + 1 === activeLesson.length) {
       console.log('finish')
@@ -110,7 +105,7 @@ export default function App() {
       setdefeat(true)
       setTimeout(() => {
         setdefeat(false)
-      }, 2500)
+      }, 4000)
     }
   }
 
@@ -118,7 +113,6 @@ export default function App() {
   const handleType = (linkNuber, lessonNumber) => {
     setMenu(false)
     setTask(true)
-    console.log(linkNuber)
     const tmpActiveLesson = AllWordsList[linkNuber - 1]
     const tmpWord = tmpActiveLesson[lessonNumber]
     setActiveLesson(tmpActiveLesson)
@@ -129,21 +123,30 @@ export default function App() {
 
   const handleSubmit = event => {
     let i = 0
-
     if (event.currentTarget[0].value === activeWord.word) {
-      for (i = 0; activeLesson.length; i++) {
-        if (activeLesson[i].word == event.currentTarget[0].value) {
-          if (i < activeLesson.length) {
-            setValue('')
-            handleType(1, i + 1);
-            return;
-          } else {
-            setValue('')
-            //lesson finished
+      let typed = event.currentTarget[0].value
+      setsuccess(true)
+      setTimeout(() => {
+        setsuccess(false)
+        for (i = 0; activeLesson.length; i++) {
+          if (activeLesson[i].word == typed) {
+            if (i < activeLesson.length) {
+              setValue('')
+              handleType(1, i + 1);
+              return;
+            } else {
+              setValue('')
+              //lesson finished
+            }
           }
         }
-      }
-      console.log('tada')
+      }, 4000)
+    }
+    else {
+      setdefeat(true)
+      setTimeout(() => {
+        setdefeat(false)
+      }, 4000)
     }
     setValue('')
     event.preventDefault()
@@ -219,11 +222,11 @@ export default function App() {
     )
     const menuAnimation = useSpring({
       opacity: '1', transform: 'translateX(0%)',
-      from: { opacity: '0.75', transform: 'translateX(100%)', transition: 'all 0.3s ease-out' }
+      from: { opacity: '0', transform: 'translateX(100%)', transition: 'all 0.s linear' }
     })
     const linksAnimation = useSpring({
       transform: 'translateX(0%)',
-      from: { transform: 'translateX(100%)', transition: 'all 0.5s ease-out' }
+      from: { transform: 'translateX(100%)', transition: 'all 0.7s ease-out' }
     })
     const tasksAnimation = useSpring({
       transform: 'scale(1)',
@@ -234,7 +237,7 @@ export default function App() {
 
         <div className={clsMessage.join(' ')}>
           <img className="success__img img--resp" src="./../img/emotion/glad.gif" />
-          <div className="defeat__img img--resp" src="./../img/emotion/cry.gif" />
+          <img className="defeat__img img--resp" src="./../img/emotion/lazy.gif" />
         </div>
         <animated.div style={menuAnimation}>
           <ul className={cls.join(' ')}>
