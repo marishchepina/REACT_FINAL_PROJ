@@ -19,6 +19,9 @@ body,
 html {
   font-size: 62.5%;
 }
+.hide {
+  display: none;
+}
 body {
   background: #fff;
   box-sizing: border-box;
@@ -43,7 +46,6 @@ body {
 
 #root {
   overflow-x: hidden;
-  overflow-y: scroll;
   .container {
     margin: 0 auto;
     position: relative;
@@ -61,5 +63,53 @@ body {
       flex-wrap: wrap;
       justify-content: center;
     }
+  }
+}
+
+.whiteBg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 9;
+}
+
+.success__img,
+.defeat__img {
+  display: none;
+}
+
+.success {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #e55842;
+  z-index: 999;
+
+  & .success__img {
+    display: block;
+  }
+}
+
+.defeat {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5b355;
+  z-index: 999;
+
+  &__img {
+    height: 100%;
+    width: auto;
+  }
+
+  & .defeat__img {
+    display: block;
   }
 }

@@ -23,10 +23,10 @@ export default function App() {
   const [activeWord, setactiveWord] = useState(activeLesson[0])
   const [intervalId, setIntervalId] = useState(0)
   const [value, setValue] = useState('')
-  const [typed, setTyped] = useState('');
 
-  //const [success, setsuccess] = useState(false)
-  //const [defeat, setdefeat] = useState(false)
+
+  const [success, setsuccess] = useState(false)
+  const [defeat, setdefeat] = useState(false)
   //const [finished, setfinished] = useState(false)
 
   const routes = [
@@ -61,34 +61,56 @@ export default function App() {
     setactiveWord(tmpWord)
     let intervalIdTmp = setInterval(() => {
       setactiveWord(tmpActiveLesson[i])
-      i++
-      if (i === activeLesson.length) {
+      if (i + 1 === activeLesson.length) {
         i = 0
       }
+      else { i++ }
     }, 4000)
     setIntervalId(intervalIdTmp);
   }
 
 
-  const handleCompare = (linkNuber) => {
+
+
+
+  const handleCompare = (linkNuber, lessonNumber) => {
     setMenu(false)
     setTask(true)
     let i = 0
-    if (activeLesson[linkNuber].word === activeWord.word) {
-      //setsuccess(true)
-      i = linkNuber + 1
-      if (i < activeLesson.length) {
-        setactiveWord(activeLesson[i])
-        return
-      }
-      else {
-        console.log("TODO: lesson finished ")
-      }
+    let tmpActiveLesson = activeLesson
+    if (lessonNumber != undefined) {
+      setActiveLesson(AllWordsList[lessonNumber - 1])
+      tmpActiveLesson = AllWordsList[linkNuber - 1]
+      setactiveWord(tmpActiveLesson[0])
+    }
+
+    if (tmpActiveLesson[linkNuber].word === activeWord.word) {
+      setsuccess(true)
+      setTimeout(() => {
+        setsuccess(false)
+        i = linkNuber + 1
+        if (i < tmpActiveLesson.length) {
+
+          setactiveWord(tmpActiveLesson[i])
+          return
+
+        }
+        else {
+          // props.value = ""
+          console.log("TODO: lesson finished ")
+        }
+      }, 2500)
     }
     if (linkNuber + 1 === activeLesson.length) {
       console.log('finish')
-      setactiveWord(activeLesson[0])
-      return;
+      setactiveWord(tmpActiveLesson[0])
+
+    }
+    else {
+      setdefeat(true)
+      setTimeout(() => {
+        setdefeat(false)
+      }, 2500)
     }
   }
 
@@ -107,13 +129,16 @@ export default function App() {
 
   const handleSubmit = event => {
     let i = 0
-    if (value === activeWord.word) {
+
+    if (event.currentTarget[0].value === activeWord.word) {
       for (i = 0; activeLesson.length; i++) {
-        if (activeLesson[i].word == value) {
+        if (activeLesson[i].word == event.currentTarget[0].value) {
           if (i < activeLesson.length) {
+            setValue('')
             handleType(1, i + 1);
             return;
           } else {
+            setValue('')
             //lesson finished
           }
         }
@@ -139,10 +164,10 @@ export default function App() {
 
 
   function Menu({ routes }) {
-
     const cls = ['nav']
     const clsTask = ['task']
-    const clsButtons = ['nav__buttons']
+
+    const clsMessage = ['']
     if (!menu) {
       cls.push('nav--close')
     }
@@ -155,7 +180,17 @@ export default function App() {
     else {
       clsTask.push('task--open')
     }
-
+    if (success) {
+      clsMessage.push('success')
+    }
+    if (defeat) {
+      clsMessage.push('defeat')
+    }
+    else if (!success && !defeat) {
+      //clsMessage.push('hide')
+    }
+    if (!menu && !task) {
+    }
 
 
     let links = AllWordsList.map((el, i) =>
@@ -168,7 +203,7 @@ export default function App() {
             <i className="far fa-eye"></i>
           </Link>
           <Link
-            onClick={() => handleCompare(i + 1)}
+            onClick={() => handleCompare(i + 1, i + 1)}
             key={'compare--' + i}
             to={`menu/compare`}>
             <i className="fas fa-dice"></i>
@@ -182,16 +217,31 @@ export default function App() {
         </span>
       </li>
     )
-    const props = useSpring({
-      opacity: 1,
-      from: { opacity: 0, transition: 'all 0.1s ease-in' }
+    const menuAnimation = useSpring({
+      opacity: '1', transform: 'translateX(0%)',
+      from: { opacity: '0.75', transform: 'translateX(100%)', transition: 'all 0.3s ease-out' }
+    })
+    const linksAnimation = useSpring({
+      transform: 'translateX(0%)',
+      from: { transform: 'translateX(100%)', transition: 'all 0.5s ease-out' }
+    })
+    const tasksAnimation = useSpring({
+      transform: 'scale(1)',
+      from: { transform: 'scale(1.08)', transition: 'all 0.5s ease-in' }
     })
     return (
-      <div className="taskWrap">
-        <animated.div style={props}>
+      <div>
+
+        <div className={clsMessage.join(' ')}>
+          <img className="success__img img--resp" src="./../img/emotion/glad.gif" />
+          <div className="defeat__img img--resp" src="./../img/emotion/cry.gif" />
+        </div>
+        <animated.div style={menuAnimation}>
           <ul className={cls.join(' ')}>
-            {links}
+            <animated.div style={linksAnimation}>{links}</animated.div >
           </ul >
+        </animated.div >
+        <animated.div style={tasksAnimation}>
           <div className={clsTask.join(' ')}>
             <Switch>
               {
@@ -202,6 +252,7 @@ export default function App() {
             </Switch >
           </div>
         </animated.div >
+
       </div >
     );
   }

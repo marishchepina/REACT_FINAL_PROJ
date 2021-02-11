@@ -13,11 +13,11 @@ const Compare = props => {
         </div>
     )
     return (
-        <div className="watch">
+        <div className="watch watch--compare">
             <div className="watch__word">
                 {props.word.word}
             </div>
-            <audio src={props.word.audio} autoPlay />
+            {/**  <audio src={props.word.audio} autoPlay />*/}
             {images}
         </div>
     )

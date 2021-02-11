@@ -1,8 +1,9 @@
 import './Tasks.scss'
 
-
+let itValue;
 const Type = props => {
     console.log(props.lesson)
+
     return (
         <div className="watch">
             <div className="watch__img">
@@ -16,8 +17,8 @@ const Type = props => {
                     <input
                         className="watch__input"
                         type="text"
-                        value={props.value}
-                        onChange={props.onChange}
+                    // value={props.value}
+                    //onChange={props.onChange}
                     />
                     <button className="watch__button" type="submit">Перевірити</button>
                 </form>
