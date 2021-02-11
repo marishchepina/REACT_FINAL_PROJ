@@ -19,6 +19,7 @@ $green: #16a085;
 }
 
 @mixin lineTransition($speed) {
+    animation-delay: 4.5s;
     background-color: lighten($green, 10%);
     -moz-transition: width $speed ease;
     -ms-transition: width $speed ease;
