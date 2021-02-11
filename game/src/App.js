@@ -25,7 +25,7 @@ export default function App() {
   const [value, setValue] = useState('')
   const [success, setsuccess] = useState(false)
   const [defeat, setdefeat] = useState(false)
-  //const [finished, setfinished] = useState(false)
+  const [menuButtons, setmenuButtons] = useState(false)
 
   const routes = [
     {
@@ -102,17 +102,25 @@ export default function App() {
 
     }
     else {
+      console.log('tmpActiveLesson[linkNuber].word ' + tmpActiveLesson[linkNuber].word)
+      console.log(activeWord.word)
       setdefeat(true)
       setTimeout(() => {
         setdefeat(false)
       }, 4000)
     }
+    //else {
+    //  setsuccess(false)
+    //  setdefeat(false)
+    // }
   }
 
 
   const handleType = (linkNuber, lessonNumber) => {
     setMenu(false)
     setTask(true)
+    setsuccess(false)
+    setdefeat(false)
     const tmpActiveLesson = AllWordsList[linkNuber - 1]
     const tmpWord = tmpActiveLesson[lessonNumber]
     setActiveLesson(tmpActiveLesson)
@@ -164,19 +172,29 @@ export default function App() {
     clearInterval(intervalId)
   }
 
-
+  // const handleButtons = (event, lessonNumber) => {
+  // setmenuButtons(true)
+  //}
 
   function Menu({ routes }) {
     const cls = ['nav']
     const clsTask = ['task']
-
+    const clsMenuButtons = ['nav__buttons nav__buttons--open']
     const clsMessage = ['']
+
+
     if (!menu) {
       cls.push('nav--close')
     }
     else {
       cls.push('nav--open')
     }
+    // if (!menuButtons) {
+    //   clsMenuButtons.push('nav__buttons--close')
+    // }
+    // else {
+    //  clsMenuButtons.push('nav__buttons--open')
+    //}
     if (!task) {
       clsTask.push('task--close')
     }
@@ -190,16 +208,18 @@ export default function App() {
       clsMessage.push('defeat')
     }
     else if (!success && !defeat) {
-      //clsMessage.push('hide')
+      clsMessage.push('hide')
     }
     if (!menu && !task) {
     }
 
 
     let links = AllWordsList.map((el, i) =>
-      <li key={i + 1}>
+      <li key={i + 1}
+      //onClick={() => handleButtons(i + 1)}
+      >
         Урок {i + 1}
-        <span className='nav__buttons nav__buttons--open'>
+        <span className={clsMenuButtons.join(' ')}>
           <Link
             onClick={() => handleWatch(i + 1)}
             key={'watch--' + i} to={`menu/watch`}>
@@ -236,8 +256,8 @@ export default function App() {
       <div>
 
         <div className={clsMessage.join(' ')}>
-          <img className="success__img img--resp" src="./../img/emotion/glad.gif" />
-          <img className="defeat__img img--resp" src="./../img/emotion/lazy.gif" />
+          <img className="success__img " src="./../img/emotion/glad.gif" />
+          <img className="defeat__img" src="./../img/emotion/lazy.gif" />
         </div>
         <animated.div style={menuAnimation}>
           <ul className={cls.join(' ')}>

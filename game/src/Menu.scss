@@ -123,6 +123,9 @@ $green: #16a085;
             }
         }
     }
+    &__buttons--close {
+        display: none;
+    }
     #root &__buttons--open {
         display: flex;
     }
