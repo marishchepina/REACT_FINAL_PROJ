@@ -4,14 +4,14 @@ import './Tasks.scss'
 const Watch = props => {
     console.log(props)
     return (
-        <div className="showWord">
-            <div className="showWord__word">
+        <div className="watch">
+            <div className="watch__word">
                 {props.word.word}
-                <div className="showWord__translate">
+                <div className="watch__translate">
                     {props.word.translate}
                 </div>
             </div>
-            <div className="showWord__img">
+            <div className="watch__img">
                 <img src={props.word.img} />
             </div>
             <audio src={props.word.audio} autoPlay />
