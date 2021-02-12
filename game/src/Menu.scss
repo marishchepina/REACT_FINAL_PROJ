@@ -41,6 +41,7 @@ $green: #16a085;
 #root .nav {
     height: auto;
     position: absolute;
+    overflow: hidden;
 }
 .nav,
 .task {

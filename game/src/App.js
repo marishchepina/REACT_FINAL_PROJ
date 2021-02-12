@@ -25,7 +25,7 @@ export default function App() {
   const [value, setValue] = useState('')
   const [success, setsuccess] = useState(false)
   const [defeat, setdefeat] = useState(false)
-  const [menuButtons, setmenuButtons] = useState(false)
+
 
   const routes = [
     {
@@ -113,10 +113,6 @@ export default function App() {
         setdefeat(false)
       }, 4000)
     }
-    //else {
-    //  setsuccess(false)
-    //  setdefeat(false)
-    // }
   }
 
 
@@ -176,9 +172,6 @@ export default function App() {
     clearInterval(intervalId)
   }
 
-  // const handleButtons = (event, lessonNumber) => {
-  // setmenuButtons(true)
-  //}
 
   function Menu({ routes }) {
     const cls = ['nav']
@@ -193,12 +186,6 @@ export default function App() {
     else {
       cls.push('nav--open')
     }
-    // if (!menuButtons) {
-    //   clsMenuButtons.push('nav__buttons--close')
-    // }
-    // else {
-    //  clsMenuButtons.push('nav__buttons--open')
-    //}
     if (!task) {
       clsTask.push('task--close')
     }
@@ -214,8 +201,7 @@ export default function App() {
     else if (!success && !defeat) {
       clsMessage.push('hide')
     }
-    if (!menu && !task) {
-    }
+
 
 
     let links = AllWordsList.map((el, i) =>
